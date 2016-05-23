@@ -1,0 +1,16 @@
+metricbeat.modules:
+- module: system
+  metricsets: ["cpu", "memory", "process"]
+  enabled: true
+  period: 1s
+  processes:
+    - generatorbeat
+    - tst-lj
+
+- module: beats
+  metricsets:
+    - generatorbeat
+  enabled: true
+  period: 1s
+
+output.console:
