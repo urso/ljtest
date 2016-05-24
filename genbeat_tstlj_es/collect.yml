@@ -13,4 +13,10 @@ metricbeat.modules:
   enabled: true
   period: 1s
 
+fields:
+  run: genbeat_tstlj_es_compressed
+  producer: generatorbeat
+  consumer: tstlj
+  protocol: es_bulk
+  bulksize: 2048
 output.console:

@@ -13,4 +13,13 @@ metricbeat.modules:
   enabled: true
   period: 1s
 
+fields:
+  run: genbeat_logstash_v2_compressed
+  producer: generatorbeat
+  consumer: logstash
+  protocol: lj_v2
+  compression: 3
+  pipelining: 0
+  bulksize: 2048
+
 output.console:
