@@ -21,5 +21,3 @@ fields:
   compression: 0
   pipelining: 5
   bulksize: 2048
-
-output.console:

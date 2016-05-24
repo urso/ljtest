@@ -2,6 +2,7 @@
 trap "trap - SIGTERM && kill -- -$$" SIGINT SIGTERM EXIT
 
 # get testing home directory from finding absolute path of env.sh
+DIR="$(dirname $0)"
 TEST_HOME=$(cd "$(dirname $BASH_SOURCE)"; pwd)
 
 # test config variables
@@ -18,6 +19,16 @@ TEST_HOME=$(cd "$(dirname $BASH_SOURCE)"; pwd)
 : ${EXPVAR_RATES:=$TEST_HOME/scripts/expvar_rates.py}
 
 : ${LOGSTASH:=logstash}
+
+: ${OUTDIR:=$DIR}
+
+
+# run script utilities
+
+collect() {
+    OUTCONFIG="output.console:"
+    $COLLECTBEAT -c <(cat $DIR/collect.yml <(echo $OUTCONFIG)) > $OUTDIR/stats.json
+}
 
 watch() {
     if $ENABLE_WATCH && [ -f "$EXPVAR_RATES" ]; then
