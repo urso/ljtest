@@ -22,12 +22,16 @@ TEST_HOME=$(cd "$(dirname $BASH_SOURCE)"; pwd)
 
 : ${OUTDIR:=$DIR}
 
+: ${OUTCONFIG:=$TEST_HOME/collect_es.yml}
 
 # run script utilities
 
 collect() {
-    OUTCONFIG="output.console:"
-    $COLLECTBEAT -c <(cat $DIR/collect.yml <(echo $OUTCONFIG)) > $OUTDIR/stats.json
+    if [ -f "$OUTCONFIG" ]; then
+        $COLLECTBEAT -c <(cat "$DIR/collect.yml" "$OUTCONFIG")
+    else
+        $COLLECTBEAT -c <(cat $DIR/collect.yml <(echo "output.console:")) > $OUTDIR/stats.json
+    fi
 }
 
 watch() {
