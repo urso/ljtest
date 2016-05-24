@@ -1,8 +1,8 @@
 # make sure all child processes are killed
-trap "trap - SIGTERM && kill -- -$$" SIGINT SIGTERM EXIT
+trap "pkill -P $$" SIGINT SIGTERM EXIT
 
 # get testing home directory from finding absolute path of env.sh
-DIR="$(dirname $0)"
+DIR=$(dirname $0)
 TEST_HOME=$(cd "$(dirname $BASH_SOURCE)"; pwd)
 
 # test config variables
@@ -28,15 +28,15 @@ TEST_HOME=$(cd "$(dirname $BASH_SOURCE)"; pwd)
 
 collect() {
     if [ -f "$OUTCONFIG" ]; then
-        $COLLECTBEAT -c <(cat "$DIR/collect.yml" "$OUTCONFIG")
+        $COLLECTBEAT -c <(cat "$DIR/collect.yml" "$OUTCONFIG") &
     else
-        $COLLECTBEAT -c <(cat $DIR/collect.yml <(echo "output.console:")) > $OUTDIR/stats.json
+        $COLLECTBEAT -c <(cat $DIR/collect.yml <(echo "output.console:")) > $OUTDIR/stats.json &
     fi
 }
 
 watch() {
     if $ENABLE_WATCH && [ -f "$EXPVAR_RATES" ]; then
-        python $EXPVAR_RATES $1/debug/vars
+        python $EXPVAR_RATES $1/debug/vars &
     fi
 }
 

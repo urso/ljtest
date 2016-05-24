@@ -8,8 +8,8 @@ $TST_LJ -v2 -bind localhost:5044 >/dev/null 2>&1 &
 # start generatorbeat sending events to test server
 $GENERATORBEAT -httpprof localhost:6060 -c $DIR/genbeat.yml &
 
-watch http://localhost:6060 &
+watch http://localhost:6060
 
-collect &
+collect
 
 wait_shut $1

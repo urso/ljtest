@@ -5,7 +5,7 @@ metricbeat.modules:
   period: 1s
   processes:
     - generatorbeat
-    - tst-lj
+    - java
 
 - module: beats
   metricsets:
