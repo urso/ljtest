@@ -24,9 +24,12 @@ TEST_HOME=$(cd "$(dirname $BASH_SOURCE)"; pwd)
 
 : ${OUTCONFIG:=$TEST_HOME/collect_es.yml}
 
+: ${WAIT_COLLECT:=0}
+
 # run script utilities
 
 collect() {
+    sleep $WAIT_COLLECT
     if [ -f "$OUTCONFIG" ]; then
         $COLLECTBEAT -c <(cat "$DIR/collect.yml" "$OUTCONFIG") &
     else
