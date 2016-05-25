@@ -1,0 +1,23 @@
+metricbeat.modules:
+- module: system
+  metricsets: ["cpu", "memory", "process"]
+  enabled: true
+  period: 1s
+  processes:
+    - generatorbeat
+    - java
+
+- module: beats
+  metricsets:
+    - generatorbeat
+  enabled: true
+  period: 1s
+
+fields:
+  run: genbeat_logstash5_v2_compressed_pipelined
+  producer: generatorbeat
+  consumer: logstash
+  protocol: lj_v2
+  compression: 3
+  pipelining: 5
+  bulksize: 2048

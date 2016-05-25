@@ -1,5 +1,5 @@
 # make sure all child processes are killed
-trap "pkill -P $$" SIGINT SIGTERM EXIT
+trap "pkill -9 -P $$" SIGINT SIGTERM EXIT
 
 # get testing home directory from finding absolute path of env.sh
 DIR=$(dirname $0)
@@ -9,16 +9,24 @@ TEST_HOME=$(cd "$(dirname $BASH_SOURCE)"; pwd)
 : ${DURATION:=60}
 : ${ENABLE_WATCH:=true}
 
+: ${WORKDIR:=$GOPATH/src}
+
 # test executables
-: ${GENERATORBEAT:=$GOPATH/src/github.com/urso/generatorbeat/generatorbeat}
+: ${GENERATORBEAT:=$WORKDIR/github.com/urso/generatorbeat/generatorbeat}
 
-: ${TST_LJ:=$GOPATH/src/github.com/urso/go-lumber/tst-lj}
+: ${JAVA_LUMBER:=$WORKDIR/github.com/ph/java-lumber}
 
-: ${COLLECTBEAT:=$GOPATH/src/github.com/urso/collectbeat/collectbeat}
+: ${TST_LJ:=$WORKDIR/github.com/urso/go-lumber/tst-lj}
+
+: ${COLLECTBEAT:=$WORKDIR/github.com/urso/collectbeat/collectbeat}
 
 : ${EXPVAR_RATES:=$TEST_HOME/scripts/expvar_rates.py}
 
 : ${LOGSTASH:=logstash}
+
+: ${LOGSTASH2=$WORKDIR/logstash-2.3.2/bin/logstash}
+
+: ${LOGSTASH5=$WORKDIR/logstash-5.0.0-alpha2/bin/logstash}
 
 : ${OUTDIR:=$DIR}
 
@@ -27,6 +35,12 @@ TEST_HOME=$(cd "$(dirname $BASH_SOURCE)"; pwd)
 : ${WAIT_COLLECT:=0}
 
 # run script utilities
+
+gradle_run() {
+    cd $1
+    gradle run &
+    cd -
+}
 
 collect() {
     sleep $WAIT_COLLECT

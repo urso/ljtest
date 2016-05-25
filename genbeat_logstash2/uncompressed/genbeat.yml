@@ -1,0 +1,7 @@
+generatorbeat.generators.filebeat:
+  worker: 1
+  repeat: 1
+
+output.logstash:
+  hosts: ["localhost:5044"]
+  compression_level: 0
