@@ -1,0 +1,46 @@
+metricbeat.modules:
+- module: system
+  metricsets: ["cpu", "memory", "process"]
+  enabled: true
+  period: 1s
+  processes:
+  {{ range .config.collect.processes }}
+    - '{{ . }}'
+  {{ end }}
+
+- module: beats
+  metricsets:
+    - generatorbeat
+  enabled: true
+  period: 1s
+
+fields:
+  run: {{ .config.name }}
+  producer: {{ .config.producer }}
+  consumer: {{ .config.consumer }}
+  protocol: {{ .config.protocol }}
+  compression: {{ .config.params.compression }}
+  pipelining: {{ .config.params.pipelining }}
+  bulksize: {{ .config.params.bulksize }}
+
+{{ with .config.out.console }}
+output.console:
+  {{ if .pretty }}
+  pretty: {{ .pretty }}
+  {{ end }}
+{{ end }}
+
+{{ with .config.out.elasticsearch }}
+output.elasticsearch:
+  hosts:
+    {{ range .hosts }}
+    - {{ . }}
+    {{ end }}
+
+  {{ if .username }}
+  username: {{ .username }}
+  {{ end }}
+  {{ if .password }}
+  password: {{ .password }}
+  {{ end }}
+{{ end }}

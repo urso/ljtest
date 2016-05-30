@@ -1,0 +1,13 @@
+run.genbeat_tstlj_es.services:
+- service: ${service.tst_lj}
+
+- service: ${service.generatorbeat}
+  config.elasticsearch:
+    - ${opt.elasticsearch.host}:${opt.lumberjack.port}
+
+- service: ${service.collect}
+  config:
+    collect.processes: ['generatorbeat', 'tst-lj']
+    producer: generatorbeat
+    consumer: tstlj
+    protocol: es

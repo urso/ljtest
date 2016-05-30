@@ -1,0 +1,2 @@
+reporting.out.elasticsearch:
+  hosts: ["${ES_HOST:localhost}:9200"]

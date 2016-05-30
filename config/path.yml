@@ -1,0 +1,24 @@
+# set by runner
+# path.workdir: "."
+
+# set by runner
+#path.config: "./config"
+
+path.workspace: ${GOPATH}/src
+
+path.test.home: ${path.workdir}
+
+path.outdir: "."
+
+path.java_lumber.home: ${path.workspace}/github.com/ph/java-lumber
+
+path.go_lumber.home: ${path.workspace}/github.com/urso/go-lumber
+path.go_lumber.tst_lj: ${path.go_lumber.home}/tst-lj
+
+path.collectbeat: ${path.workspace}/github.com/urso/collectbeat/collectbeat
+
+path.scripts.home: ${path.test.home}/scripts
+
+path.generatorbeat: ${path.workspace}/github.com/urso/generatorbeat/generatorbeat
+
+path.logstash: ${LOGSTASH_HOME:/usr}/bin/logstash

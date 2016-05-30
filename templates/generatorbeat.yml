@@ -1,0 +1,23 @@
+generatorbeat.generators.filebeat:
+  worker: 1
+  repeat: 1
+
+{{ if .config.logstash }}
+output.logstash:
+  hosts:
+    {{ range .config.logstash }}
+    - {{ . }}
+    {{ end }}
+  bulk_max_size: {{ .config.params.bulksize }}
+  compression_level: {{ .config.params.compression }}
+  pipelining: {{ .config.params.pipelining }}
+{{ end }}
+
+{{ if .config.elasticsearch }}
+output.elasticsearch:
+  hosts:
+    {{ range .config.elasticsearch }}
+    - {{ . }}
+    {{ end }}
+  bulk_max_size: {{ .config.params.bulksize }}
+{{ end }}

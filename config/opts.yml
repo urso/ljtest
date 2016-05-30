@@ -1,0 +1,21 @@
+opt.duration: ${DURATION:60s}
+
+opt.wait.collect: ${WAIT_COLLECT:0s}
+opt.wait.after: ${WAIT_AFTER:0s}
+
+opt.enable_watch: ${ENABLE_WATCH:false}
+
+opt.lumberjack.bind: ${opt.lumberjack.host}:${opt.lumberjack.port}
+opt.lumberjack.host: ${LS_HOST:localhost}
+opt.lumberjack.port: 5044
+
+opt.generatorbeat.flags: -httpprof ${opt.generatorbeat.prof.bind}
+opt.generatorbeat.prof.bind: localhost:${opt.generatorbeat.prof.port}
+opt.generatorbeat.prof.port: 6060
+
+opt.elasticsearch.host: ${ES_HOST:localhost}
+opt.elasticsearch.port: 9200
+
+opt.collectbeat.flags: ""
+
+opt.logstash.pipelining: false

@@ -1,0 +1,26 @@
+run.genbeat_tstlj_v2.services:
+- service: ${service.tst_lj}
+
+- service: ${service.generatorbeat}
+  config.logstash:
+    - ${opt.lumberjack.host}:${opt.lumberjack.port}
+
+- service: ${service.collect}
+  config:
+    collect.processes: ['generatorbeat', 'tst-lj']
+    producer: generatorbeat
+    consumer: tstlj
+    protocol: lj_v2
+
+run.genbeat_tstlj_v2.configurations:
+- name: ${_active.name}_compressed
+  params: ${params.lj.compressed}
+
+- name: ${_active.name}_compressed_pipelined
+  params: ${params.lj.compressed_pipelined}
+
+- name: ${_active.name}_uncompressed
+  params: ${params.lj.uncompressed}
+
+- name: ${_active.name}_uncompressed_pipelined
+  params: ${params.lj.uncompressed_pipelined}

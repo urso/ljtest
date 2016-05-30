@@ -1,7 +1,0 @@
-generatorbeat.generators.filebeat:
-  worker: 1
-  repeat: 1
-
-output.logstash:
-  hosts: ["localhost:5044"]
-  bulk_max_size: 2048

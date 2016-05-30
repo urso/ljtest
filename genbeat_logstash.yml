@@ -1,0 +1,31 @@
+run.genbeat_logstash.services:
+- service: ${service.logstash}
+
+- service: ${service.generatorbeat}
+  config.logstash:
+    - ${opt.lumberjack.host}:${opt.lumberjack.port}
+
+- service: ${service.collect}
+  config:
+    collect.processes: ['generatorbeat', 'java']
+    producer: generatorbeat
+    consumer: logstash
+    protocol: lj_v2
+
+run.genbeat_logstash.supports:
+  pipelined: ${opt.logstash.pipelining:false}
+
+run.genbeat_logstash.configurations:
+- name: ${_active.name}_compressed
+  params: ${params.lj.compressed}
+
+- name: ${_active.name}_compressed_pipelined
+  enable: ${_active.run.supports.pipelined:false}
+  params: ${params.lj.compressed_pipelined}
+
+- name: ${_active.name}_uncompressed
+  params: ${params.lj.uncompressed}
+
+- name: ${_active.name}_uncompressed_pipelined
+  enable: ${_active.run.supports.pipelined:false}
+  params: ${params.lj.uncompressed_pipelined}

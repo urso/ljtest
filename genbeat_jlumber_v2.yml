@@ -1,0 +1,28 @@
+run.genbeat_jlumber_v2.services:
+- service: ${service.jlumber.server}
+
+- service: ${service.generatorbeat}
+  config.logstash:
+    - ${opt.lumberjack.host}:${opt.lumberjack.port}
+
+- service: ${service.collect}
+  config:
+    collect.processes: ["generatorbeat", "java"]
+    producer: generatorbeat
+    consumer: jlumber
+    protocol: lj_v2
+
+run.genbeat_jlumber_v2.configurations:
+- name: ${_active.name}_compressed
+  params: ${params.lj.compressed}
+
+- name: ${_active.name}_compressed_pipelined
+  params: ${params.lj.compressed_pipelined}
+
+- name: ${_active.name}_uncompressed
+  enable: false
+  params: ${params.lj.uncompressed}
+
+- name: ${_active.name}_uncompressed_pipelined
+  enable: false
+  params: ${params.lj.uncompressed_pipelined}

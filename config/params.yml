@@ -1,0 +1,20 @@
+params.lj:
+  compressed:
+    compression: 3
+    pipelining: 0
+    bulksize: 2048
+
+  compressed_pipelined:
+    compression: 3
+    pipelining: 0
+    bulksize: 2048
+
+  uncompressed:
+    compression: 3
+    pipelining: 0
+    bulksize: 2048
+
+  uncompressed_pipelined:
+    compression: 3
+    pipelining: 0
+    bulksize: 2048

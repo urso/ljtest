@@ -1,0 +1,36 @@
+service.watch:
+  cmd: python "${path.scripts.home}/expvar_rates.py" http://${opt.generatorbeat.prof.bind}/debug/vars
+  enabled: ${opt.enable_watch}
+  stdout: true
+  stderr: true
+
+service.jlumber.server:
+  #cmd: gradle run
+  cmd: java -cp build/libs/beats-all.jar org.logstash.beats.Runner
+  dir: ${path.java_lumber.home}
+
+service.tst_lj:
+  cmd: '"${path.go_lumber.tst_lj}" -v1 -v2 -es -bind ${opt.lumberjack.bind}'
+
+service.generatorbeat:
+  cmd: '"${path.generatorbeat}" ${opt.generatorbeat.flags}'
+  config.file.flag: -c
+  config.template: ${path.template}/generatorbeat.yml
+
+service.collect:
+  cmd: '"${path.collectbeat}" ${opt.collectbeat.flags}'
+  #stdout: ${${reporting.out.console:+bool.true}:false}
+  #stderr: ${service.collect.stdout}
+  config.file.flag: -c
+  config.template: ${path.template}/collectbeat.yml
+  config.out: ${reporting.out}
+  config.wait.before: ${opt.wait.collect}
+
+service.logstash:
+  cmd: "${_active.logstash:${path.logstash:logstash}}"
+  config.file.flag: -f
+  config.template: ${path.template}/logstash.conf
+  config.port: ${opt.lumberjack.port}
+
+bool.true: true
+bool.false: false
