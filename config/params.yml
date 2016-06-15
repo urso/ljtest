@@ -6,15 +6,22 @@ params.lj:
 
   compressed_pipelined:
     compression: 3
-    pipelining: 0
+    pipelining: 5
     bulksize: 2048
 
   uncompressed:
-    compression: 3
+    compression: 0
     pipelining: 0
     bulksize: 2048
 
   uncompressed_pipelined:
-    compression: 3
-    pipelining: 0
+    compression: 0
+    pipelining: 5
     bulksize: 2048
+
+params.es:
+  compressed:
+    compression: 3
+
+  uncompressed:
+    compression: 0

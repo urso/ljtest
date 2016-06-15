@@ -1,7 +1,7 @@
 opt.duration: ${DURATION:60s}
 
 opt.wait.collect: ${WAIT_COLLECT:0s}
-opt.wait.after: ${WAIT_AFTER:0s}
+opt.wait.after: ${WAIT_AFTER:2s}
 
 opt.enable_watch: ${ENABLE_WATCH:false}
 

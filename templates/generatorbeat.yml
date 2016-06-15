@@ -1,6 +1,9 @@
 generatorbeat.generators.filebeat:
-  worker: 1
+  worker: 4
   repeat: 1
+  {{ if .config.sample.file }}
+  sample_file: {{ .config.sample.file }}
+  {{ end }}
 
 {{ if .config.logstash }}
 output.logstash:
@@ -20,4 +23,5 @@ output.elasticsearch:
     - {{ . }}
     {{ end }}
   bulk_max_size: {{ .config.params.bulksize }}
+  compression_level: {{ .config.params.compression }}
 {{ end }}

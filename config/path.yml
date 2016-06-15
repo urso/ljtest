@@ -6,6 +6,8 @@
 
 path.workspace: ${GOPATH}/src
 
+path.files: ${path.test.home}/files
+
 path.test.home: ${path.workdir}
 
 path.outdir: "."

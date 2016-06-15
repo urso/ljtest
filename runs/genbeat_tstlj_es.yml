@@ -4,6 +4,7 @@ run.genbeat_tstlj_es.services:
 - service: ${service.generatorbeat}
   config.elasticsearch:
     - ${opt.elasticsearch.host}:${opt.lumberjack.port}
+  config.params.bulksize: 2048
 
 - service: ${service.collect}
   config:
@@ -11,3 +12,10 @@ run.genbeat_tstlj_es.services:
     producer: generatorbeat
     consumer: tstlj
     protocol: es
+
+run.genbeat_tstlj_es.configurations:
+- name: ${_active.name}_compressed
+  params: ${params.es.compressed}
+
+- name: ${_active.name}_uncompressed
+  params: ${params.es.uncompressed}

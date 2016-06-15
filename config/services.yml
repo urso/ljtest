@@ -16,6 +16,7 @@ service.generatorbeat:
   cmd: '"${path.generatorbeat}" ${opt.generatorbeat.flags}'
   config.file.flag: -c
   config.template: ${path.template}/generatorbeat.yml
+  config.sample.file: ${path.files}/test.log.bz2
 
 service.collect:
   cmd: '"${path.collectbeat}" ${opt.collectbeat.flags}'
