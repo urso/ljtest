@@ -1,16 +1,16 @@
 [
   {
-    "_id": "Beats-Throughput",
+    "_id": "Stats-Table",
     "_type": "visualization",
     "_source": {
-      "title": "Beats Throughput",
-      "visState": "{\"title\":\"New Visualization\",\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"showCircles\":true,\"smoothLines\":false,\"interpolate\":\"linear\",\"scale\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"times\":[],\"addTimeMarker\":true,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"beats.generatorbeat.total.success\",\"customLabel\":\"events/s\"}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"fields.run\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"_term\"}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{},\"customLabel\":\"time\"}}],\"listeners\":{}}",
-      "uiStateJSON": "{\"vis\":{\"colors\":{\"genbeat_logstash_v2_compressed\":\"#7EB26D\",\"genbeat_logstash_v2_compressed_pipelined\":\"#447EBC\",\"genbeat_tstlj_es_compressed\":\"#F9934E\",\"genbeat_tstlj_v2_compressed\":\"#E24D42\",\"genbeat_tstlj_v2_compressed_pipelined\":\"#BA43A9\"}}}",
+      "title": "Stats Table",
+      "visState": "{\"title\":\"Stats Table\",\"type\":\"table\",\"params\":{\"perPage\":10,\"showPartialRows\":false,\"showMeticsAtAllLevels\":false},\"aggs\":[{\"id\":\"1\",\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"beats.generatorbeat.total.success\",\"customLabel\":\"ACKed events/s\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"fields.run\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Test label\"}},{\"id\":\"3\",\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"beats.generatorbeat.total.fail\",\"customLabel\":\"failed events/s\"}},{\"id\":\"4\",\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"fields.producer\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"producer\"}},{\"id\":\"5\",\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"fields.consumer\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"consumer\"}},{\"id\":\"6\",\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"fields.protocol\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"protocol\"}},{\"id\":\"7\",\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"fields.compression\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"compression\"}},{\"id\":\"8\",\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"fields.pipelining\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"pipelining\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
       "description": "",
       "savedSearchId": "Metricset-Beats-Throughput",
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"filter\":[]}"
+        "searchSourceJSON": "{\"filter\":[{\"$state\":{\"store\":\"globalState\"},\"meta\":{\"alias\":null,\"disabled\":false,\"index\":\"collectbeat-*\",\"key\":\"beat.name\",\"negate\":true,\"value\":\"Steffens-MBP-2.fritz.box\"},\"query\":{\"match\":{\"beat.name\":{\"query\":\"Steffens-MBP-2.fritz.box\",\"type\":\"phrase\"}}}},{\"$state\":{\"store\":\"globalState\"},\"meta\":{\"alias\":null,\"disabled\":false,\"index\":\"collectbeat-*\",\"key\":\"fields.consumer\",\"negate\":false,\"value\":\"logstash\"},\"query\":{\"match\":{\"fields.consumer\":{\"query\":\"logstash\",\"type\":\"phrase\"}}}}]}"
       }
     }
   },
@@ -19,7 +19,7 @@
     "_type": "visualization",
     "_source": {
       "title": "CPU usage",
-      "visState": "{\"title\":\"New Visualization\",\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"showCircles\":true,\"smoothLines\":false,\"interpolate\":\"linear\",\"scale\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"system.process.cpu.total.pct\",\"customLabel\":\"CPU - total\"}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"fields.run\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\"}},{\"id\":\"4\",\"type\":\"terms\",\"schema\":\"split\",\"params\":{\"field\":\"system.process.name\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\",\"row\":true}}],\"listeners\":{}}",
+      "visState": "{\"title\":\"CPU usage\",\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"showCircles\":true,\"smoothLines\":false,\"interpolate\":\"linear\",\"scale\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"system.process.cpu.total.pct\",\"customLabel\":\"CPU - total\"}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"fields.run\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\"}},{\"id\":\"4\",\"type\":\"terms\",\"schema\":\"split\",\"params\":{\"field\":\"system.process.name\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\",\"row\":true}}],\"listeners\":{}}",
       "uiStateJSON": "{}",
       "description": "",
       "savedSearchId": "Metricset-System-Process-Generatorbeat-With-Logstash",
@@ -34,25 +34,10 @@
     "_type": "visualization",
     "_source": {
       "title": "Mem RSS",
-      "visState": "{\"title\":\"CPU usage\",\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"showCircles\":true,\"smoothLines\":false,\"interpolate\":\"linear\",\"scale\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"system.process.memory.rss.bytes\",\"customLabel\":\"Mem RSS\"}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}},{\"id\":\"4\",\"type\":\"terms\",\"schema\":\"split\",\"params\":{\"field\":\"system.process.name\",\"size\":5,\"order\":\"asc\",\"orderBy\":\"1\",\"row\":true}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"fields.run\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+      "visState": "{\"title\":\"Mem RSS\",\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"showCircles\":true,\"smoothLines\":false,\"interpolate\":\"linear\",\"scale\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"system.process.memory.rss.bytes\",\"customLabel\":\"Mem RSS\"}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}},{\"id\":\"4\",\"type\":\"terms\",\"schema\":\"split\",\"params\":{\"field\":\"system.process.name\",\"size\":5,\"order\":\"asc\",\"orderBy\":\"1\",\"row\":true}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"fields.run\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
       "uiStateJSON": "{}",
       "description": "",
       "savedSearchId": "Metricset-System-Process-Generatorbeat-With-Logstash",
-      "version": 1,
-      "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"filter\":[]}"
-      }
-    }
-  },
-  {
-    "_id": "Mem-RSS-Generatorbeat",
-    "_type": "visualization",
-    "_source": {
-      "title": "Mem RSS - Generatorbeat",
-      "visState": "{\"title\":\"New Visualization\",\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"showCircles\":true,\"smoothLines\":false,\"interpolate\":\"linear\",\"scale\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"system.process.memory.rss.bytes\",\"customLabel\":\"Mem RSS\"}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"fields.run\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
-      "uiStateJSON": "{}",
-      "description": "",
-      "savedSearchId": "Metricset-System-Process-Generatorbeat",
       "version": 1,
       "kibanaSavedObjectMeta": {
         "searchSourceJSON": "{\"filter\":[]}"
@@ -64,7 +49,7 @@
     "_type": "visualization",
     "_source": {
       "title": "Mem RSS - Logstash",
-      "visState": "{\"title\":\"New Visualization\",\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"showCircles\":true,\"smoothLines\":false,\"interpolate\":\"linear\",\"scale\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"system.process.memory.rss.bytes\",\"customLabel\":\"Mem RSS\"}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"fields.run\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+      "visState": "{\"title\":\"Mem RSS - Logstash\",\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"showCircles\":true,\"smoothLines\":false,\"interpolate\":\"linear\",\"scale\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"system.process.memory.rss.bytes\",\"customLabel\":\"Mem RSS\"}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"fields.run\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
       "uiStateJSON": "{}",
       "description": "",
       "savedSearchId": "Metricset-System-Process-Logstash",
@@ -75,17 +60,77 @@
     }
   },
   {
-    "_id": "Stats-Table",
+    "_id": "Mem-RSS-Generatorbeat",
     "_type": "visualization",
     "_source": {
-      "title": "Stats Table",
-      "visState": "{\"title\":\"New Visualization\",\"type\":\"table\",\"params\":{\"perPage\":10,\"showPartialRows\":false,\"showMeticsAtAllLevels\":false},\"aggs\":[{\"id\":\"1\",\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"beats.generatorbeat.total.success\",\"customLabel\":\"ACKed events/s\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"fields.run\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Test label\"}},{\"id\":\"3\",\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"beats.generatorbeat.total.fail\",\"customLabel\":\"failed events/s\"}},{\"id\":\"4\",\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"fields.producer\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"producer\"}},{\"id\":\"5\",\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"fields.consumer\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"consumer\"}},{\"id\":\"6\",\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"fields.protocol\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"protocol\"}},{\"id\":\"7\",\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"fields.compression\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"compression\"}},{\"id\":\"8\",\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"fields.pipelining\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"pipelining\"}}],\"listeners\":{}}",
+      "title": "Mem RSS - Generatorbeat",
+      "visState": "{\"title\":\"Mem RSS - Generatorbeat\",\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"showCircles\":true,\"smoothLines\":false,\"interpolate\":\"linear\",\"scale\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"system.process.memory.rss.bytes\",\"customLabel\":\"Mem RSS\"}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"fields.run\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
       "uiStateJSON": "{}",
+      "description": "",
+      "savedSearchId": "Metricset-System-Process-Generatorbeat",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Beats-Throughput-Events",
+    "_type": "visualization",
+    "_source": {
+      "title": "Beats Throughput - Events",
+      "visState": "{\"aggs\":[{\"id\":\"1\",\"params\":{\"customLabel\":\"events/s\",\"field\":\"beats.generatorbeat.total.success\"},\"schema\":\"metric\",\"type\":\"avg\"},{\"id\":\"3\",\"params\":{\"field\":\"fields.run\",\"order\":\"desc\",\"orderBy\":\"_term\",\"size\":5},\"schema\":\"group\",\"type\":\"terms\"},{\"id\":\"2\",\"params\":{\"customInterval\":\"2h\",\"customLabel\":\"time\",\"extended_bounds\":{},\"field\":\"@timestamp\",\"interval\":\"auto\",\"min_doc_count\":1},\"schema\":\"segment\",\"type\":\"date_histogram\"}],\"listeners\":{},\"params\":{\"addLegend\":true,\"addTimeMarker\":true,\"addTooltip\":true,\"defaultYExtents\":false,\"drawLinesBetweenPoints\":true,\"interpolate\":\"linear\",\"radiusRatio\":9,\"scale\":\"linear\",\"setYExtents\":false,\"shareYAxis\":true,\"showCircles\":true,\"smoothLines\":false,\"times\":[],\"yAxis\":{}},\"title\":\"Beats Throughput\",\"type\":\"line\"}",
+      "uiStateJSON": "{\"vis\":{\"colors\":{\"genbeat_logstash_v2_compressed\":\"#7EB26D\",\"genbeat_logstash_v2_compressed_pipelined\":\"#447EBC\",\"genbeat_tstlj_es_compressed\":\"#F9934E\",\"genbeat_tstlj_v2_compressed\":\"#E24D42\",\"genbeat_tstlj_v2_compressed_pipelined\":\"#BA43A9\"}}}",
       "description": "",
       "savedSearchId": "Metricset-Beats-Throughput",
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"filter\":[{\"$state\":{\"store\":\"globalState\"},\"meta\":{\"alias\":null,\"disabled\":false,\"index\":\"collectbeat-*\",\"key\":\"beat.name\",\"negate\":true,\"value\":\"Steffens-MBP-2.fritz.box\"},\"query\":{\"match\":{\"beat.name\":{\"query\":\"Steffens-MBP-2.fritz.box\",\"type\":\"phrase\"}}}},{\"$state\":{\"store\":\"globalState\"},\"meta\":{\"alias\":null,\"disabled\":false,\"index\":\"collectbeat-*\",\"key\":\"fields.consumer\",\"negate\":false,\"value\":\"logstash\"},\"query\":{\"match\":{\"fields.consumer\":{\"query\":\"logstash\",\"type\":\"phrase\"}}}}]}"
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Beats-Throughput-Read-Bytes",
+    "_type": "visualization",
+    "_source": {
+      "title": "Beats Throughput - Read Bytes",
+      "visState": "{\"title\":\"Beats Throughput\",\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"showCircles\":true,\"smoothLines\":false,\"interpolate\":\"linear\",\"scale\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"times\":[],\"addTimeMarker\":true,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"beats.generatorbeat.total.read_bytes\",\"customLabel\":\"bytes/s\"}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"fields.run\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"_term\"}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{},\"customLabel\":\"time\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{\"vis\":{\"colors\":{\"genbeat_logstash_v2_compressed\":\"#7EB26D\",\"genbeat_logstash_v2_compressed_pipelined\":\"#447EBC\",\"genbeat_tstlj_es_compressed\":\"#F9934E\",\"genbeat_tstlj_v2_compressed\":\"#E24D42\",\"genbeat_tstlj_v2_compressed_pipelined\":\"#BA43A9\"}}}",
+      "description": "",
+      "savedSearchId": "Metricset-Beats-Throughput",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Beats-Throughput-Write-Bytes",
+    "_type": "visualization",
+    "_source": {
+      "title": "Beats Throughput - Write Bytes",
+      "visState": "{\"title\":\"Beats Throughput - Read Bytes\",\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"showCircles\":true,\"smoothLines\":false,\"interpolate\":\"linear\",\"scale\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"times\":[],\"addTimeMarker\":true,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"beats.generatorbeat.total.write_bytes\",\"customLabel\":\"bytes/s\"}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"fields.run\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"_term\"}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{},\"customLabel\":\"time\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{\"vis\":{\"colors\":{\"genbeat_logstash_v2_compressed\":\"#7EB26D\",\"genbeat_logstash_v2_compressed_pipelined\":\"#447EBC\",\"genbeat_tstlj_es_compressed\":\"#F9934E\",\"genbeat_tstlj_v2_compressed\":\"#E24D42\",\"genbeat_tstlj_v2_compressed_pipelined\":\"#BA43A9\"}}}",
+      "description": "",
+      "savedSearchId": "Metricset-Beats-Throughput",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Beats-Net-IO-Errors",
+    "_type": "visualization",
+    "_source": {
+      "title": "Beats Net IO Errors",
+      "visState": "{\"title\":\"Beats Throughput - Write Bytes\",\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"showCircles\":true,\"smoothLines\":false,\"interpolate\":\"linear\",\"scale\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"times\":[],\"addTimeMarker\":true,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"beats.generatorbeat.total.read_errors\",\"customLabel\":\"Read Errors\"}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{},\"customLabel\":\"time\"}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"fields.run\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"_term\"}},{\"id\":\"4\",\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"beats.generatorbeat.total.write_errors\",\"customLabel\":\"Write Errors\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{\"vis\":{\"colors\":{\"genbeat_logstash_v2_compressed\":\"#7EB26D\",\"genbeat_logstash_v2_compressed_pipelined\":\"#447EBC\",\"genbeat_tstlj_es_compressed\":\"#F9934E\",\"genbeat_tstlj_v2_compressed\":\"#E24D42\",\"genbeat_tstlj_v2_compressed_pipelined\":\"#BA43A9\"}},\"spy\":{\"mode\":{\"name\":null,\"fill\":false}}}",
+      "description": "",
+      "savedSearchId": "Metricset-Beats-Throughput",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
       }
     }
   }
