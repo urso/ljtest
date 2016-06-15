@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"time"
 
 	"github.com/urso/ucfg"
@@ -33,8 +32,6 @@ func makeScenarios(env *ucfg.Config, run runConfig, activeRun *ucfg.Config) ([]s
 		if err != nil {
 			return nil, err
 		}
-
-		fmt.Println(check)
 
 		if !check.Enabled {
 			continue

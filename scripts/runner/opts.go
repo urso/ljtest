@@ -3,7 +3,8 @@ package main
 import "time"
 
 type Options struct {
-	Duration time.Duration `config:"opt.duration"`
+	Duration  time.Duration `config:"duration"`
+	WaitAfter time.Duration `config:"wait.after"`
 }
 
 var (

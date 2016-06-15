@@ -5,6 +5,7 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+	"time"
 
 	"github.com/urso/ucfg"
 	"github.com/urso/ucfg/yaml"
@@ -31,7 +32,7 @@ func main() {
 func run(cfg *ucfg.Config) error {
 	runs := struct {
 		Runs map[string]*ucfg.Config `config:"run"`
-		Opt  Options
+		Opt  Options                 `config:"opt"`
 	}{nil, defaultOptions}
 
 	err := cfg.Unpack(&runs, ucfg.PathSep("."), ucfg.VarExp, ucfg.ResolveEnv)
@@ -62,6 +63,11 @@ func run(cfg *ucfg.Config) error {
 			if err := s.run(&runs.Opt, cfg); err != nil {
 				log.Println("  failed")
 				return err
+			}
+
+			if runs.Opt.WaitAfter > 0 {
+				log.Println("waiting: ", runs.Opt.WaitAfter)
+				time.Sleep(runs.Opt.WaitAfter)
 			}
 		}
 		log.Println("finished: ", name)
@@ -110,16 +116,18 @@ func mergeConfig(to *ucfg.Config, path string) error {
 	}
 
 	err = to.Merge(from)
+
 	/*
 		{
+			log.Println("merge config: ", path)
 			// print config
 			var tmp map[string]interface{}
 			// cfg.Unpack(&tmp, ucfg.PathSep("."))
-			to.Unpack(&tmp)
+			to.Unpack(&tmp, ucfg.ResolveEnv)
 			raw, err := json.MarshalIndent(tmp, "> ", "    ")
-			log.Println(tmp)
+			log.Println("tmp: ", tmp)
+			log.Println("err: ", err)
 			log.Println(string(raw))
-			log.Println(err)
 		}
 	*/
 
