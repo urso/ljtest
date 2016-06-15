@@ -1,0 +1,122 @@
+[
+  {
+    "_id": "Metricset-System-Process-(Generatorbeat- -Logstash)",
+    "_type": "search",
+    "_source": {
+      "title": "Metricset System Process (Generatorbeat + Logstash)",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "_source"
+      ],
+      "sort": [
+        "@timestamp",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"collectbeat-*\",\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647},\"query\":{\"query_string\":{\"query\":\"metricset.module:system AND metricset.name:process AND system.process.cmdline:(generatorbeat logstash)\",\"analyze_wildcard\":true}}}"
+      }
+    }
+  },
+  {
+    "_id": "Metricset-System-Process-Generatorbeat- -Logstash",
+    "_type": "search",
+    "_source": {
+      "title": "Metricset System Process - Generatorbeat + Logstash",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "_source"
+      ],
+      "sort": [
+        "@timestamp",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"collectbeat-*\",\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647},\"query\":{\"query_string\":{\"query\":\"metricset.module:system AND metricset.name:process AND system.process.cmdline:(generatorbeat logstash)\",\"analyze_wildcard\":true}}}"
+      }
+    }
+  },
+  {
+    "_id": "Metricset-Beats-Throughput",
+    "_type": "search",
+    "_source": {
+      "title": "Metricset Beats Throughput",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "_source"
+      ],
+      "sort": [
+        "@timestamp",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"collectbeat-*\",\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647},\"query\":{\"query_string\":{\"query\":\"metricset.module:beats AND metricset.name:generatorbeat\",\"analyze_wildcard\":true}}}"
+      }
+    }
+  },
+  {
+    "_id": "Metricset-System-Process",
+    "_type": "search",
+    "_source": {
+      "title": "Metricset System Process",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "_source"
+      ],
+      "sort": [
+        "@timestamp",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"collectbeat-*\",\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647},\"query\":{\"query_string\":{\"query\":\"metricset.module:system AND metricset.name:process\",\"analyze_wildcard\":true}}}"
+      }
+    }
+  },
+  {
+    "_id": "Metricset-System-Process-Generatorbeat",
+    "_type": "search",
+    "_source": {
+      "title": "Metricset System Process - Generatorbeat",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "_source"
+      ],
+      "sort": [
+        "@timestamp",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"collectbeat-*\",\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647},\"query\":{\"query_string\":{\"query\":\"metricset.module:system AND metricset.name:process AND system.process.name:generatorbeat\",\"analyze_wildcard\":true}}}"
+      }
+    }
+  },
+  {
+    "_id": "Metricset-System-Process-Logstash",
+    "_type": "search",
+    "_source": {
+      "title": "Metricset System Process - Logstash",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "_source"
+      ],
+      "sort": [
+        "@timestamp",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"collectbeat-*\",\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647},\"query\":{\"query_string\":{\"query\":\"metricset.module:system AND metricset.name:process AND system.process.cmdline:(logstash)\",\"analyze_wildcard\":true}}}"
+      }
+    }
+  }
+]

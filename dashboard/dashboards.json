@@ -1,0 +1,19 @@
+[
+  {
+    "_id": "Dashboard",
+    "_type": "dashboard",
+    "_source": {
+      "title": "Dashboard",
+      "hits": 0,
+      "description": "",
+      "panelsJSON": "[{\"col\":1,\"id\":\"Beats-Throughput\",\"panelIndex\":1,\"row\":3,\"size_x\":12,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"CPU-usage\",\"panelIndex\":2,\"row\":7,\"size_x\":12,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Mem-RSS-Generatorbeat\",\"panelIndex\":3,\"row\":11,\"size_x\":6,\"size_y\":2,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Mem-RSS-Logstash\",\"panelIndex\":4,\"row\":11,\"size_x\":6,\"size_y\":2,\"type\":\"visualization\"},{\"id\":\"Stats-Table\",\"type\":\"visualization\",\"panelIndex\":5,\"size_x\":12,\"size_y\":2,\"col\":1,\"row\":1}]",
+      "optionsJSON": "{\"darkTheme\":false}",
+      "uiStateJSON": "{\"P-1\":{\"vis\":{\"colors\":{\"genbeat_logstash_v2_compressed\":\"#7EB26D\",\"genbeat_logstash_v2_compressed_pipelined\":\"#447EBC\",\"genbeat_tstlj_es_compressed\":\"#F9934E\",\"genbeat_tstlj_v2_compressed\":\"#E24D42\",\"genbeat_tstlj_v2_compressed_pipelined\":\"#3F6833\"}}},\"P-2\":{\"vis\":{\"colors\":{\"genbeat_logstash_v2_compressed\":\"#7EB26D\",\"genbeat_logstash_v2_compressed_pipelined\":\"#447EBC\",\"genbeat_tstlj_es_compressed\":\"#F9934E\",\"genbeat_tstlj_v2_compressed\":\"#E24D42\",\"genbeat_tstlj_v2_compressed_pipelined\":\"#3F6833\"}}},\"P-3\":{\"vis\":{\"colors\":{\"genbeat_logstash_v2_compressed\":\"#7EB26D\",\"genbeat_logstash_v2_compressed_pipelined\":\"#447EBC\",\"genbeat_tstlj_es_compressed\":\"#F9934E\",\"genbeat_tstlj_v2_compressed\":\"#E24D42\",\"genbeat_tstlj_v2_compressed_pipelined\":\"#3F6833\"}}},\"P-4\":{\"vis\":{\"colors\":{\"genbeat_logstash_v2_compressed\":\"#7EB26D\",\"genbeat_logstash_v2_compressed_pipelined\":\"#447EBC\"}}}}",
+      "version": 1,
+      "timeRestore": false,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[{\"$state\":{\"store\":\"globalState\"},\"meta\":{\"alias\":null,\"disabled\":false,\"index\":\"collectbeat-*\",\"key\":\"beat.name\",\"negate\":true,\"value\":\"Steffens-MBP-2.fritz.box\"},\"query\":{\"match\":{\"beat.name\":{\"query\":\"Steffens-MBP-2.fritz.box\",\"type\":\"phrase\"}}}},{\"$state\":{\"store\":\"globalState\"},\"meta\":{\"alias\":null,\"disabled\":false,\"index\":\"collectbeat-*\",\"key\":\"fields.consumer\",\"negate\":false,\"value\":\"logstash\"},\"query\":{\"match\":{\"fields.consumer\":{\"query\":\"logstash\",\"type\":\"phrase\"}}}},{\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"*\"}}}]}"
+      }
+    }
+  }
+]
