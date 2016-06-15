@@ -48,8 +48,11 @@ def main():
                         per_sec = "na"
                         avg_sec = "na"
                     last_vals[key] = total
-                    stdscr.addstr("{}: {}/s (avg: {}/s) (total: {})\n"
-                                  .format(key, per_sec, avg_sec, total))
+                    try:
+                        stdscr.addstr("{}: {}/s (avg: {}/s) (total: {})\n"
+                                      .format(key, per_sec, avg_sec, total))
+                    except:
+                        pass
             stdscr.refresh()
         except requests.ConnectionError:
             stdscr.addstr("Waiting for connection...\n")
