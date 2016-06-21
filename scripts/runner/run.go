@@ -85,7 +85,8 @@ func (s *scenario) readServiceConfig(env *ucfg.Config) ([]*service, error) {
 
 		// unpack shared service configs
 		scfg := defaultServiceConfig
-		if err := cfg.Unpack(&scfg, opts...); err != nil {
+		serviceOpts := append(opts, ucfg.Env(cfg))
+		if err := cfg.Unpack(&scfg, serviceOpts...); err != nil {
 			return nil, err
 		}
 
@@ -94,7 +95,10 @@ func (s *scenario) readServiceConfig(env *ucfg.Config) ([]*service, error) {
 		}
 
 		var raw map[string]interface{}
-		cfg.Unpack(&raw, opts...)
+		err = cfg.Unpack(&raw, opts...)
+		if err != nil {
+			return nil, err
+		}
 		services = append(services, &service{config: &scfg, all: raw})
 	}
 
