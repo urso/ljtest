@@ -8,15 +8,19 @@ import (
 	"time"
 
 	"github.com/urso/ucfg"
+	"github.com/urso/ucfg/cfgutil"
+	cfgflag "github.com/urso/ucfg/flag"
 	"github.com/urso/ucfg/yaml"
 )
 
 func main() {
 	dir := flag.String("d", "config", "Runner configurations")
 	tmpl := flag.String("t", "templates", "Template directory")
+	cliConfig := cfgflag.Config(nil, "D", "Configuration overwrites",
+		ucfg.VarExp, ucfg.PathSep("."))
 	flag.Parse()
 
-	cfg, err := readConfig(*dir, *tmpl, flag.Args())
+	cfg, err := readConfig(*dir, *tmpl, cliConfig, flag.Args())
 	if err != nil {
 		log.Println("Failed to load configuration")
 		log.Println(err)
@@ -76,60 +80,43 @@ func run(cfg *ucfg.Config) error {
 	return nil
 }
 
-func readConfig(configDir string, tmplDir string, runFiles []string) (*ucfg.Config, error) {
-
+func readConfig(
+	configDir string,
+	tmplDir string,
+	cliConfig *ucfg.Config,
+	runFiles []string,
+) (*ucfg.Config, error) {
 	workdir, err := os.Getwd()
 	if err != nil {
 		return nil, err
 	}
 
-	cfg, err := ucfg.NewFrom(map[string]interface{}{
+	cfgOpts := []ucfg.Option{ucfg.PathSep("."), ucfg.VarExp}
+
+	cfg := cfgutil.NewCollector(nil, cfgOpts...)
+	cfg.Add(ucfg.NewFrom(map[string]interface{}{
 		"path.config":   configDir,
 		"path.template": tmplDir,
 		"path.workdir":  workdir,
-	}, ucfg.PathSep("."), ucfg.VarExp)
+	}, cfgOpts...))
 
 	// load configs
 	err = filepath.Walk(configDir, func(path string, info os.FileInfo, err error) error {
 		if err != nil || info.IsDir() || filepath.Ext(path) != ".yml" || filepath.Base(path)[0] == '.' {
 			return err
 		}
-		return mergeConfig(cfg, path)
+		return cfg.Add(yaml.NewConfigWithFile(path, cfgOpts...))
 	})
 	if err != nil {
 		return nil, err
 	}
 
-	for _, runFile := range runFiles {
-		if err := mergeConfig(cfg, runFile); err != nil {
+	for _, path := range runFiles {
+		if err := cfg.Add(yaml.NewConfigWithFile(path, cfgOpts...)); err != nil {
 			return nil, err
 		}
 	}
 
-	return cfg, nil
-}
-
-func mergeConfig(to *ucfg.Config, path string) error {
-	from, err := yaml.NewConfigWithFile(path, ucfg.PathSep("."), ucfg.VarExp)
-	if err != nil {
-		return err
-	}
-
-	err = to.Merge(from)
-
-	/*
-		{
-			log.Println("merge config: ", path)
-			// print config
-			var tmp map[string]interface{}
-			// cfg.Unpack(&tmp, ucfg.PathSep("."))
-			to.Unpack(&tmp, ucfg.ResolveEnv)
-			raw, err := json.MarshalIndent(tmp, "> ", "    ")
-			log.Println("tmp: ", tmp)
-			log.Println("err: ", err)
-			log.Println(string(raw))
-		}
-	*/
-
-	return err
+	cfg.Add(cliConfig, nil)
+	return cfg.Get()
 }
