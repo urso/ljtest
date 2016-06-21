@@ -3,25 +3,31 @@ params.lj:
     compression: 3
     pipelining: 0
     bulksize: 2048
+    ratelimit: ${_active.run.opt.rate_limit:0}
 
   compressed_pipelined:
     compression: 3
     pipelining: 5
     bulksize: 2048
+    ratelimit: ${_active.run.opt.rate_limit:0}
 
   uncompressed:
     compression: 0
     pipelining: 0
     bulksize: 2048
+    ratelimit: ${_active.run.opt.rate_limit:0}
 
   uncompressed_pipelined:
     compression: 0
     pipelining: 5
     bulksize: 2048
+    ratelimit: ${_active.run.opt.rate_limit:0}
 
 params.es:
   compressed:
     compression: 3
+    ratelimit: ${_active.run.opt.rate_limit:0}
 
   uncompressed:
     compression: 0
+    ratelimit: ${_active.run.opt.rate_limit:0}

@@ -10,7 +10,7 @@ service.jlumber.server:
   dir: ${path.java_lumber.home}
 
 service.tst_lj:
-  cmd: '"${path.go_lumber.tst_lj}" -v1 -v2 -es -bind ${opt.lumberjack.bind}'
+  cmd: '"${path.go_lumber.tst_lj}" -v1 -v2 -es ${_active.config.params.ratelimit:+-rate ${_active.config.params.ratelimit}} -q -bind ${opt.lumberjack.bind}'
 
 service.generatorbeat:
   cmd: '"${path.generatorbeat}" ${opt.generatorbeat.flags}'

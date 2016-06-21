@@ -1,21 +1,33 @@
-run.genbeat_tstlj_es.services:
-- service: ${service.tst_lj}
+run.genbeat_tstlj_es:
+  opt.rate_limit: 0
+  services: ${__run__.genbeat_tstlj_es.services}
+  configurations: ${__run__.genbeat_tstlj_es.configurations}
 
-- service: ${service.generatorbeat}
-  config.elasticsearch:
-    - ${opt.elasticsearch.host}:${opt.lumberjack.port}
-  config.params.bulksize: 2048
+run.genbeat_tstlj_es_ratelimit:
+  opt.rate_limit: ${RATE_LIMIT:10}
+  services: ${__run__.genbeat_tstlj_es.services}
+  configurations: ${__run__.genbeat_tstlj_es.configurations}
 
-- service: ${service.collect}
-  config:
-    collect.processes: ['generatorbeat', 'tst-lj']
-    producer: generatorbeat
-    consumer: tstlj
-    protocol: es
 
-run.genbeat_tstlj_es.configurations:
-- name: ${_active.name}_compressed
-  params: ${params.es.compressed}
+__run__.genbeat_tstlj_es:
+  services:
+  - service: ${service.tst_lj}
+  
+  - service: ${service.generatorbeat}
+    config.elasticsearch:
+      - ${opt.lumberjack.host}:${opt.lumberjack.port}
+    config.params.bulksize: 2048
+  
+  - service: ${service.collect}
+    config:
+      collect.processes: ['generatorbeat', 'tst-lj']
+      producer: generatorbeat
+      consumer: tstlj
+      protocol: es
 
-- name: ${_active.name}_uncompressed
-  params: ${params.es.uncompressed}
+  configurations:
+  - name: ${_active.name}_compressed
+    params: ${params.es.compressed}
+  
+  - name: ${_active.name}_uncompressed
+    params: ${params.es.uncompressed}
