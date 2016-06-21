@@ -14,7 +14,7 @@ path.outdir: "."
 
 path.java_lumber.home: ${path.workspace}/github.com/ph/java-lumber
 
-path.go_lumber.home: ${path.workspace}/github.com/urso/go-lumber
+path.go_lumber.home: ${path.workspace}/github.com/elastic/go-lumber
 path.go_lumber.tst_lj: ${path.go_lumber.home}/tst-lj
 
 path.collectbeat: ${path.workspace}/github.com/urso/collectbeat/collectbeat
